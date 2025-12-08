@@ -1,5 +1,4 @@
-````markdown
-# 💻 My WezTerm Config (Windows)
+<h2> align="center">💻 My WezTerm Config (Windows)</h2>
 
 <p align="center">
   <a href="https://github.com/Amal717/Keyboard-Shortcuts/stargazers">
@@ -35,6 +34,7 @@ You can install WezTerm using **winget**:
 ```sh
 winget install wez.wezterm
 ```
+
 ````
 
 Or, using **Scoop**:
@@ -216,3 +216,4 @@ wezterm-windows/
 ```
 
 ```
+````
