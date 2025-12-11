@@ -1,4 +1,4 @@
-<h2> align="center">💻 My WezTerm Config (Windows)</h2>
+<h2 align="center">My WezTerm Config (Windows)</h2>
 
 <p align="center">
   <a href="https://github.com/Amal717/Keyboard-Shortcuts/stargazers">
@@ -11,17 +11,18 @@
 
 ---
 
-![WezTerm Configuration Screenshot](screenshot.gif)
+![screenshot](./screenshot.gif)
 
 ---
 
 ## ✨ Features (Windows Only)
 
-- **Clean** WezTerm configuration
-- **Windows-optimized** keyboard shortcuts
-- Background image cycling
+- Clean & minimal WezTerm config
+- Optimized Windows keyboard shortcuts
+- Dynamic background image cycling
 - Pane, tab, and window management shortcuts
-- Font and pane resizing key-tables
+- Font resizing key-table
+- Modern UI experience powered by Lua modules
 
 ---
 
@@ -29,53 +30,53 @@
 
 ### 1. Install WezTerm
 
-You can install WezTerm using **winget**:
+Using **winget**:
 
 ```sh
 winget install wez.wezterm
 ```
 
-````
-
-Or, using **Scoop**:
+Or using **Scoop**:
 
 ```sh
 scoop bucket add extras
 scoop install wezterm
 ```
 
-### 2\. Install JetBrainsMono Nerd Font
+---
 
-It's recommended to install **JetBrainsMono Nerd Font** for the icons and glyphs to display correctly.
+### 2. Install JetBrainsMono Nerd Font
+
+Recommended for icons and glyph support.
 
 ```sh
 scoop bucket add nerd-fonts
 scoop install JetBrainsMono-NF
 ```
 
-### 3\. Clone Your Config
+---
 
-Clone the repository to your local machine:
+### 3. Clone This Repo & Install Config
 
 ```sh
-git clone [https://github.com/Amal717/Keyboard-Shortcuts.git](https://github.com/Amal717/Keyboard-Shortcuts.git)
+git clone https://github.com/Amal717/Keyboard-Shortcuts.git
 ```
 
-Then, copy the configuration folder to WezTerm's expected location:
+Then copy the Windows config folder:
 
 ```
-# Source folder to copy
+Source:
 Keyboard-Shortcuts/wezterm-windows
 
-# Destination folder (rename 'wezterm-windows' to 'wezterm' at the destination)
+Destination:
 C:\Users\<YourUser>\.config\wezterm
 ```
 
+> Rename `wezterm-windows` → `wezterm` when placing it inside `.config`.
+
 ---
 
-## 🎹 Windows Key Shortcuts
-
-These are the custom modifier key mappings used in this configuration:
+## 🎹 Windows Key Modifiers
 
 | Modifier      | Windows Keys        |
 | :------------ | :------------------ |
@@ -98,122 +99,123 @@ These are the custom modifier key mappings used in this configuration:
 
 ### 📋 Copy / Paste
 
-These follow standard Windows terminal conventions.
-
 | Keys               | Action |
 | :----------------- | :----- |
 | `Ctrl + Shift + C` | Copy   |
 | `Ctrl + Shift + V` | Paste  |
 
-### ⌨ Cursor Movement
+---
 
-| Keys                | Action             |
-| :------------------ | :----------------- |
-| `SUPER + Left`      | Move to line start |
-| `SUPER + Right`     | Move to line end   |
-| `SUPER + Backspace` | Clear line         |
+## ⌨ Cursor Movement
+
+| Keys                | Action        |
+| :------------------ | :------------ |
+| `SUPER + Left`      | Move to start |
+| `SUPER + Right`     | Move to end   |
+| `SUPER + Backspace` | Clear line    |
 
 ---
 
 ## 🗂 Tabs and Windows
 
-### Tab Management
+### Tabs
 
-| Keys            | Action                    |
-| :-------------- | :------------------------ |
-| `SUPER + t`     | New tab                   |
-| `SUPER_REV + w` | Close tab                 |
-| `SUPER + [`     | Next tab                  |
-| `SUPER + ]`     | Previous tab              |
-| `SUPER + 9`     | Toggle tab bar visibility |
+| Keys            | Action         |
+| :-------------- | :------------- |
+| `SUPER + t`     | New tab        |
+| `SUPER_REV + w` | Close tab      |
+| `SUPER + [`     | Next tab       |
+| `SUPER + ]`     | Previous tab   |
+| `SUPER + 9`     | Toggle tab bar |
 
-### 🪟 Window Management
+### Windows
 
-| Keys        | Action                                       |
-| :---------- | :------------------------------------------- |
-| `SUPER + n` | New window                                   |
-| `SUPER + =` | Increase font size (in key table, see below) |
-| `SUPER + -` | Decrease font size (in key table, see below) |
+| Keys        | Action                             |
+| :---------- | :--------------------------------- |
+| `SUPER + n` | New window                         |
+| `SUPER + =` | Increase font size (via key-table) |
+| `SUPER + -` | Decrease font size (via key-table) |
 
 ---
 
 ## 🔳 Pane Management
 
-### Split Panes
-
-| Keys            | Action                  |
-| :-------------- | :---------------------- |
-| `SUPER + \`     | Split pane vertically   |
-| `SUPER_REV + \` | Split pane horizontally |
-
-### Navigate Panes (Vim-style)
+### Splits
 
 | Keys            | Action             |
 | :-------------- | :----------------- |
-| `SUPER_REV + h` | Move to pane left  |
-| `SUPER_REV + j` | Move to pane down  |
-| `SUPER_REV + k` | Move to pane up    |
-| `SUPER_REV + l` | Move to pane right |
+| `SUPER + \`     | Split vertically   |
+| `SUPER_REV + \` | Split horizontally |
+
+### Navigation (Vim-style)
+
+| Keys            | Action |
+| :-------------- | :----- |
+| `SUPER_REV + h` | Left   |
+| `SUPER_REV + j` | Down   |
+| `SUPER_REV + k` | Up     |
+| `SUPER_REV + l` | Right  |
 
 ### Zoom / Close
 
-| Keys            | Action                   |
-| :-------------- | :----------------------- |
-| `SUPER + Enter` | Zoom pane to fill window |
-| `SUPER + w`     | Close current pane       |
+| Keys            | Action     |
+| :-------------- | :--------- |
+| `SUPER + Enter` | Zoom pane  |
+| `SUPER + w`     | Close pane |
 
 ---
 
-## 🖼 Background Images
+## 🖼 Background Image Controls
 
-| Keys            | Action                 |
-| :-------------- | :--------------------- |
-| `SUPER + /`     | Random image           |
-| `SUPER + ,`     | Next image             |
-| `SUPER + .`     | Previous image         |
-| `SUPER_REV + /` | Fuzzy select image     |
-| `SUPER + b`     | Toggle background blur |
+| Keys            | Action             |
+| :-------------- | :----------------- |
+| `SUPER + /`     | Random image       |
+| `SUPER + ,`     | Next image         |
+| `SUPER + .`     | Previous image     |
+| `SUPER_REV + /` | Fuzzy select image |
+| `SUPER + b`     | Toggle blur        |
 
 ---
 
 ## 🔠 Key Table: Resize Font
 
-Enter this key table with: **`LEADER + f`**
+**Enter with:** `LEADER + f`
 
-| Keys        | Action                     |
-| :---------- | :------------------------- |
-| `k`         | Increase font size         |
-| `j`         | Decrease font size         |
-| `r`         | Reset font size to default |
-| `q` / `Esc` | Exit key table             |
+| Keys        | Action           |
+| :---------- | :--------------- |
+| `k`         | Increase         |
+| `j`         | Decrease         |
+| `r`         | Reset to default |
+| `q` / `Esc` | Exit             |
 
 ---
 
 ## 📐 Key Table: Resize Pane
 
-Enter this key table with: **`LEADER + p`**
+**Enter with:** `LEADER + p`
 
-| Keys        | Action            |
-| :---------- | :---------------- |
-| `h`         | Resize pane left  |
-| `l`         | Resize pane right |
-| `k`         | Resize pane up    |
-| `j`         | Resize pane down  |
-| `q` / `Esc` | Exit key table    |
+| Keys        | Action       |
+| :---------- | :----------- |
+| `h`         | Shrink left  |
+| `l`         | Shrink right |
+| `k`         | Shrink up    |
+| `j`         | Shrink down  |
+| `q` / `Esc` | Exit         |
 
 ---
 
 ## 📌 Repo Structure
 
 ```
-wezterm-windows/
- ├─ wezterm.lua     <-- Main configuration file
- ├─ config/         <-- Configuration modules
- ├─ utils/          <-- Utility functions
- └─ backdrops/      <-- Folder for background images
+wezterm/
+ ├─ wezterm.lua       # Main config
+ ├─ config/           # Modules
+ ├─ utils/            # Utility functions
+ └─ backdrops/        # Background images
 ```
 
-```
+---
 
-```
-````
+## ❤️ Credits
+
+Made with love by **Amal** — optimized for Windows and productivity.
