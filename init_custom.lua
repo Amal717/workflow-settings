@@ -37,6 +37,14 @@ o.swapfile       = false
 o.backup         = false
 o.undofile       = true   -- undo survives closing nvim
 
+-- ── CLIPBOARD CHECK ─────────────────────────────────────────
+if vim.fn.executable("xclip") == 0 then
+  vim.notify(
+    "xclip not found! Run: sudo apt install xclip",
+    vim.log.levels.WARN
+  )
+end
+
 o.clipboard      = "unnamedplus"  -- share clipboard with system and tmux
 
 o.termguicolors  = true
@@ -65,7 +73,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ── BOOTSTRAP lazy.nvim ─────────────────────────────────────
 -- Only needed for catppuccin. Installs itself on first launch.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git", "clone", "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
