@@ -37,13 +37,27 @@ o.swapfile       = false
 o.backup         = false
 o.undofile       = true   -- undo survives closing nvim
 
--- ── CLIPBOARD CHECK ─────────────────────────────────────────
-if vim.fn.executable("xclip") == 0 then
-  vim.notify(
-    "xclip not found! Run: sudo apt install xclip",
-    vim.log.levels.WARN
-  )
+-- ── CLIPBOARD (auto-detect Wayland / X11 / headless) ────────
+local function check_clipboard()
+  if vim.env.WAYLAND_DISPLAY then
+    if vim.fn.executable("wl-copy") == 0 then
+      vim.notify(
+        "Wayland detected but wl-clipboard not found! Run: sudo apt install wl-clipboard",
+        vim.log.levels.WARN
+      )
+    end
+  elseif vim.env.DISPLAY then
+    if vim.fn.executable("xclip") == 0 and vim.fn.executable("xsel") == 0 then
+      vim.notify(
+        "X11 detected but no clipboard tool found! Run: sudo apt install xclip",
+        vim.log.levels.WARN
+      )
+    end
+  end
+  -- headless/embedded: stay silent
 end
+
+check_clipboard()
 
 o.clipboard      = "unnamedplus"  -- share clipboard with system and tmux
 
