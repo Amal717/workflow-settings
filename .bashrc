@@ -13,14 +13,14 @@ shopt -s checkwinsize
 # ── LESS ────────────────────────────────────────────────────
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# ── CATPPUCCIN MOCHA PS1 ─────────────────────────────────────
-_MAUVE="\[\e[38;2;203;166;247m\]"
-_GREEN="\[\e[38;2;166;227;161m\]"
-_BLUE="\[\e[38;2;137;180;250m\]"
-_PEACH="\[\e[38;2;250;179;135m\]"
+# ── PS1 — purple + neon green (Mocha-blended) ───────────────
+_PURPLE="\[\e[38;2;180;100;255m\]"   # vivid purple  — username + $
+_NEON="\[\e[38;2;50;255;120m\]"      # neon green    — directory
+_BRACKET="\[\e[38;2;130;80;200m\]"   # dim purple    — brackets/lines
+_HOST="\[\e[38;2;200;180;255m\]"     # soft lavender — hostname
 _RESET="\[\e[0m\]"
-_status() { [[ $? != 0 ]] && echo -n " ✗"; }
-PS1="${_MAUVE}┌─[${_GREEN}\u${_MAUVE}@${_BLUE}\h${_MAUVE}]─[${_PEACH}\w${_MAUVE}]\$(_status)\n${_MAUVE}└─${_GREEN}\$${_RESET} "
+_status() { [[ $? != 0 ]] && printf "\[\e[38;2;255;80;80m\] ✗\[\e[0m\]"; }
+PS1="${_BRACKET}┌─[${_PURPLE}\u${_BRACKET}@${_HOST}\h${_BRACKET}]─[${_NEON}\w${_BRACKET}]\$(_status)\n${_BRACKET}└─${_PURPLE}\$${_RESET} "
 
 # ── COLORS ──────────────────────────────────────────────────
 if [ -x /usr/bin/dircolors ]; then
