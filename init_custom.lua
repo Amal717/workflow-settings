@@ -77,9 +77,9 @@ vim.g.netrw_liststyle = 3  -- tree view
 
 -- ── TREESITTER (built-in, no plugin needed) ─────────────────
 vim.api.nvim_create_autocmd("FileType", {
-  pattern  = { "c", "cpp", "rust", "lua", "bash", "toml", "make", "vim" },
+  pattern  = { "c", "cpp", "rust", "lua", "bash", "toml", "vim" },
   callback = function()
-    vim.treesitter.start()
+    pcall(vim.treesitter.start)
   end,
 })
 
