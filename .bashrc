@@ -12,6 +12,10 @@ shopt -s checkwinsize
 # ── LESS ────────────────────────────────────────────────────
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# ── TRUE COLOR ───────────────────────────────────────────────
+# Tell terminal and tmux to use 24-bit RGB colors
+export COLORTERM=truecolor
+
 # ── COLORS ──────────────────────────────────────────────────
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -25,7 +29,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -39,7 +42,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ── PS1 — neon green + catppuccin ───────────────────────────
 _GREEN="\[\e[38;2;50;255;120m\]"     # neon green        — username + hostname
 _BRACKET="\[\e[38;2;243;139;168m\]"  # catppuccin red    — brackets/lines
-_PATH="\[\e[38;2;189;147;249m\]"     # catppuccin violet — directory ★
+_PATH="\[\e[38;2;189;147;249m\]"     # catppuccin violet — directory
 _BOLD="\[\e[1m\]"
 _RESET="\[\e[0m\]"
 _status() { [[ $? != 0 ]] && printf '\e[38;2;235;160;172m ✗\e[0m'; }
