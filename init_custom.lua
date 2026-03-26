@@ -1,6 +1,6 @@
 -- ============================================================
 -- NEOVIM CONFIG — bare minimum
--- Rust / C / C++ | Catppuccin theme | No extra plugins
+-- Rust / C / C++ | Catppuccin theme
 -- ============================================================
 
 
@@ -12,14 +12,14 @@ vim.g.maplocalleader = " "
 -- ── OPTIONS ─────────────────────────────────────────────────
 local o = vim.opt
 
-o.number         = true   -- current line number
-o.relativenumber = true   -- distance to other lines
-o.signcolumn     = "yes"  -- always show gutter (no layout jumps)
-o.cursorline     = true   -- highlight current line
+o.number         = true
+o.relativenumber = true
+o.signcolumn     = "yes"
+o.cursorline     = true
 
-o.tabstop        = 4      -- 4 spaces (Rust/C standard)
+o.tabstop        = 4
 o.shiftwidth     = 4
-o.expandtab      = true   -- spaces not tabs
+o.expandtab      = true
 o.smartindent    = true
 
 o.wrap           = false
@@ -28,16 +28,16 @@ o.sidescrolloff  = 8
 o.splitright     = true
 o.splitbelow     = true
 
-o.ignorecase     = true   -- case-insensitive search
-o.smartcase      = true   -- unless you type a capital
-o.hlsearch       = false  -- no highlights after search
-o.incsearch      = true   -- highlight as you type
+o.ignorecase     = true
+o.smartcase      = true
+o.hlsearch       = false
+o.incsearch      = true
 
 o.swapfile       = false
 o.backup         = false
-o.undofile       = true   -- undo survives closing nvim
+o.undofile       = true
 
--- ── CLIPBOARD (auto-detect Wayland / X11 / headless) ────────
+-- ── CLIPBOARD ───────────────────────────────────────────────
 local function check_clipboard()
   if vim.env.WAYLAND_DISPLAY then
     if vim.fn.executable("wl-copy") == 0 then
@@ -54,15 +54,13 @@ local function check_clipboard()
       )
     end
   end
-  -- headless/embedded: stay silent
 end
 
 check_clipboard()
 
-o.clipboard      = "unnamedplus"  -- share clipboard with system and tmux
-
+o.clipboard      = "unnamedplus"
 o.termguicolors  = true
-o.updatetime     = 50     -- as fast as possible
+o.updatetime     = 50
 o.timeoutlen     = 150
 
 
@@ -70,14 +68,14 @@ o.timeoutlen     = 150
 o.statusline = " %{mode()} │ %f %m%r %= %y │ %l:%c │ %p%% "
 
 
--- ── NETRW (built-in file browser) ───────────────────────────
-vim.g.netrw_banner    = 0  -- no banner
-vim.g.netrw_liststyle = 3  -- tree view
+-- ── NETRW ───────────────────────────────────────────────────
+vim.g.netrw_banner    = 0
+vim.g.netrw_liststyle = 3
 
 
--- ── TREESITTER (built-in, no plugin needed) ─────────────────
+-- ── TREESITTER (built-in parsers only) ──────────────────────
 vim.api.nvim_create_autocmd("FileType", {
-  pattern  = { "c", "cpp", "rust", "lua", "bash", "toml", "vim" },
+  pattern  = { "c", "lua", "vim", "vimdoc" },
   callback = function()
     pcall(vim.treesitter.start)
   end,
@@ -85,7 +83,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 
 -- ── BOOTSTRAP lazy.nvim ─────────────────────────────────────
--- Only needed for catppuccin. Installs itself on first launch.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
@@ -98,15 +95,14 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- ── PLUGINS ─────────────────────────────────────────────────
--- Only one: the theme
 require("lazy").setup({
   {
     "catppuccin/nvim",
     name     = "catppuccin",
     priority = 1000,
     opts = {
-      flavour                = "mocha",  -- latte / frappe / macchiato / mocha
-      transparent_background = true,    -- uses your terminal background
+      flavour                = "mocha",
+      transparent_background = true,
       term_colors            = true,
     },
   },
